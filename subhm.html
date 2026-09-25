@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Tools Hub | Free Online Tools</title>
+<meta name="description" content="Free online calculator, percentage calculator, BMI calculator, age calculator, word counter and password generator.">
+<meta name="robots" content="index, follow">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f5f7fb;color:#172033;line-height:1.6}
+nav{position:sticky;top:0;z-index:99;background:white;padding:16px 7%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 15px #0001}
+.logo{font-size:24px;font-weight:bold;color:#2563eb}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{text-decoration:none;color:#172033;font-weight:bold}
+nav a:hover{color:#2563eb}
+.hero{text-align:center;color:white;padding:90px 20px;background:linear-gradient(135deg,#2563eb,#7c3aed)}
+.hero h1{font-size:50px;margin-bottom:15px}
+.hero span{color:#fde047}
+.hero p{max-width:700px;margin:auto;font-size:18px}
+.btn{display:inline-block;margin-top:25px;padding:13px 25px;background:white;color:#2563eb;border-radius:25px;text-decoration:none;font-weight:bold}
+section{padding:65px 7%}
+.title{text-align:center;font-size:35px;margin-bottom:35px}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:white;padding:25px;border-radius:18px;box-shadow:0 8px 25px #0000000d}
+.card h3{margin:10px 0}
+.card p{color:#667085}
+.card button{width:100%;padding:12px;border:0;border-radius:9px;background:#2563eb;color:white;font-weight:bold;cursor:pointer;margin-top:15px}
+.calculator{max-width:600px;margin:auto;background:white;padding:25px;border-radius:18px;box-shadow:0 8px 25px #0000000d}
+input,textarea{width:100%;padding:13px;margin:7px 0;border:1px solid #d0d5dd;border-radius:9px}
+.calcbtn{width:100%;padding:13px;border:0;border-radius:9px;background:#2563eb;color:white;font-weight:bold;cursor:pointer;margin-top:8px}
+.result{margin-top:15px;padding:14px;background:#eff6ff;color:#1d4ed8;border-radius:9px;text-align:center;font-weight:bold}
+footer{background:#111827;color:white;text-align:center;padding:30px}
+footer a{color:#93c5fd;text-decoration:none;margin:0 8px}
+
+@media(max-width:750px){
+nav{flex-direction:column;gap:12px}
+nav ul{flex-wrap:wrap;justify-content:center}
+.hero h1{font-size:38px}
+.tools{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">⚡ Smart Tools Hub</div>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+<header class="hero">
+<h1>Free <span>Online Tools</span></h1>
+<p>Useful calculators and everyday online tools — simple, fast and free to use.</p>
+<a class="btn" href="#tools">Explore Tools ↓</a>
+</header>
+
+<section id="tools">
+<h2 class="title">🛠️ Our Free Tools</h2>
+
+<div class="tools">
+
+<div class="card">
+<h3>🧮 Calculator</h3>
+<p>Perform basic mathematical calculations quickly.</p>
+<button onclick="calculator()">Use Calculator</button>
+</div>
+
+<div class="card">
+<h3>📊 Percentage Calculator</h3>
+<p>Calculate a percentage of any number.</p>
+<button onclick="percentage()">Calculate</button>
+</div>
+
+<div class="card">
+<h3>⚖️ BMI Calculator</h3>
+<p>Calculate BMI using your height and weight.</p>
+<button onclick="bmi()">Calculate BMI</button>
+</div>
+
+<div class="card">
+<h3>🎂 Age Calculator</h3>
+<p>Calculate your approximate age in years.</p>
+<button onclick="age()">Calculate Age</button>
+</div>
+
+<div class="card">
+<h3>📝 Word Counter</h3>
+<p>Count words and characters in your text.</p>
+<button onclick="wordCounter()">Count Words</button>
+</div>
+
+<div class="card">
+<h3>🔐 Password Generator</h3>
+<p>Generate a random password for testing and general use.</p>
+<button onclick="password()">Generate</button>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="title">🧮 Quick Calculator</h2>
+
+<div class="calculator">
+<input id="a" type="number" placeholder="First number">
+<input id="b" type="number" placeholder="Second number">
+
+<button class="calcbtn" onclick="calc('+')">Add +</button>
+<button class="calcbtn" onclick="calc('-')">Subtract −</button>
+<button class="calcbtn" onclick="calc('*')">Multiply ×</button>
+<button class="calcbtn" onclick="calc('/')">Divide ÷</button>
+
+<div class="result" id="result">Result will appear here</div>
+</div>
+</section>
+
+<section>
+<h2 class="title">About These Tools</h2>
+<p style="max-width:800px;margin:auto;text-align:center">
+Smart Tools Hub provides simple browser-based utilities for everyday calculations.
+The tools are designed to be easy to use on mobile phones, tablets and computers.
+</p>
+</section>
+
+<footer>
+<p>© 2026 Smart Tools Hub</p>
+<br>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms</a>
+<a href="contact.html">Contact</a>
+</footer>
+
+<script>
+function calc(op){
+let a=Number(document.getElementById("a").value);
+let b=Number(document.getElementById("b").value);
+let r;
+
+if(isNaN(a)||isNaN(b)){r="Please enter both numbers."}
+else if(op==="+"){r=a+b}
+else if(op==="-"){r=a-b}
+else if(op==="*"){r=a*b}
+else if(op==="/"){r=b===0?"Cannot divide by zero.":a/b}
+
+document.getElementById("result").innerText="Result: "+r;
+}
+
+function calculator(){
+document.getElementById("a").focus();
+window.scrollTo({top:document.querySelector(".calculator").offsetTop-80,behavior:"smooth"});
+}
+
+function percentage(){
+let n=prompt("Enter number:");
+let p=prompt("Enter percentage:");
+if(n!==null&&p!==null){
+alert(p+"% of "+n+" = "+((Number(n)*Number(p))/100));
+}
+}
+
+function bmi(){
+let w=prompt("Weight in kilograms:");
+let h=prompt("Height in meters:");
+if(w&&h){
+let value=Number(w)/(Number(h)*Number(h));
+alert("Your BMI is approximately "+value.toFixed(2));
+}
+}
+
+function age(){
+let d=prompt("Enter birth date (YYYY-MM-DD):");
+if(!d)return;
+let birth=new Date(d);
+let today=new Date();
+let years=today.getFullYear()-birth.getFullYear();
+let m=today.getMonth()-birth.getMonth();
+if(m<0||(m===0&&today.getDate()<birth.getDate()))years--;
+alert("Your approximate age is "+years+" years.");
+}
+
+function wordCounter(){
+let t=prompt("Paste or type your text:");
+if(t!==null){
+let words=t.trim()?t.trim().split(/\s+/).length:0;
+alert("Words: "+words+"\nCharacters: "+t.length);
+}
+}
+
+function password(){
+let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+let p="";
+for(let i=0;i<14;i++){
+p+=chars[Math.floor(Math.random()*chars.length)];
+}
+alert("Generated password:\n\n"+p);
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Smart Tools Hub</title>
+<meta name="description" content="Learn about Smart Tools Hub and our free online utility tools.">
+<style>
+body{font-family:Arial;margin:0;background:#f5f7fb;color:#172033}
+header{background:#2563eb;color:white;padding:25px 7%}
+main{max-width:850px;margin:50px auto;padding:30px;background:white;border-radius:15px;line-height:1.8}
+a{color:#2563eb;text-decoration:none}
+</style>
+</head>
+<body>
+<header><h1>⚡ Smart Tools Hub</h1></header>
+<main>
+<h2>About Us</h2>
+<p>Smart Tools Hub is a website providing simple browser-based tools for everyday use.</p>
+
+<h2>What We Provide</h2>
+<p>Our website includes calculators and utilities such as percentage calculation, BMI calculation, age calculation, word counting and password generation.</p>
+
+<h2>Our Goal</h2>
+<p>Our goal is to make common online calculations simple and accessible on mobile and desktop devices.</p>
+
+<p><a href="index.html">← Back to Home</a></p>
+</main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Smart Tools Hub</title>
+<meta name="description" content="Contact Smart Tools Hub for questions, suggestions or feedback.">
+<style>
+body{font-family:Arial;background:#f5f7fb;color:#172033;margin:0}
+main{max-width:650px;margin:50px auto;background:white;padding:30px;border-radius:15px}
+input,textarea{width:100%;padding:13px;margin:8px 0;box-sizing:border-box;border:1px solid #ddd;border-radius:8px}
+textarea{height:130px}
+button{width:100%;padding:13px;background:#2563eb;color:white;border:0;border-radius:8px;font-weight:bold}
+a{color:#2563eb}
+</style>
+</head>
+<body>
+<main>
+<h1>📩 Contact Us</h1>
+<p>Questions, suggestions or feedback ke liye neeche form fill karein.</p>
+
+<form onsubmit="sendMessage(event)">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea placeholder="Your Message" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+
+<p id="message"></p>
+
+<p><a href="index.html">← Back to Home</a></p>
+</main>
+
+<script>
+function sendMessage(e){
+e.preventDefault();
+document.getElementById("message").innerText=
+"Thank you for your message. This demo form is ready to be connected to an email/form service.";
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Smart Tools Hub</title>
+<meta name="description" content="Privacy Policy for Smart Tools Hub.">
+<style>
+body{font-family:Arial;background:#f5f7fb;color:#172033;margin:0}
+main{max-width:850px;margin:50px auto;background:white;padding:30px;border-radius:15px;line-height:1.8}
+a{color:#2563eb}
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy Policy</h1>
+
+<p>Last updated: September 25, 2026</p>
+
+<h2>Information We Collect</h2>
+<p>Smart Tools Hub does not intentionally request sensitive personal information through the basic online tools on this website.</p>
+
+<h2>Cookies and Advertising</h2>
+<p>If advertising or analytics services are added in the future, those services may use cookies or similar technologies according to their own policies and applicable requirements.</p>
+
+<h2>Third-Party Services</h2>
+<p>External services may have their own privacy policies. Users should review the policies of those services when applicable.</p>
+
+<h2>Changes</h2>
+<p>This Privacy Policy may be updated when website features or services change.</p>
+
+<p><a href="index.html">← Back to Home</a></p>
+</main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use | Smart Tools Hub</title>
+<meta name="description" content="Terms of Use for Smart Tools Hub.">
+<style>
+body{font-family:Arial;background:#f5f7fb;color:#172033;margin:0}
+main{max-width:850px;margin:50px auto;background:white;padding:30px;border-radius:15px;line-height:1.8}
+a{color:#2563eb}
+</style>
+</head>
+<body>
+<main>
+<h1>Terms of Use</h1>
+
+<p>By using Smart Tools Hub, you agree to use the website responsibly and lawfully.</p>
+
+<h2>Tools</h2>
+<p>The tools are provided for general informational and utility purposes. Results should be checked independently when accuracy is important.</p>
+
+<h2>Availability</h2>
+<p>We may modify, update or remove website features at any time.</p>
+
+<h2>External Services</h2>
+<p>The website may eventually contain links or services provided by third parties. Their terms and policies may apply.</p>
+
+<h2>Contact</h2>
+<p>For questions about these terms, please use our Contact page.</p>
+
+<p><a href="index.html">← Back to Home</a></p>
+</main>
+</body>
+</html>
+User-agent: *
+Allow: /
+
+Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
