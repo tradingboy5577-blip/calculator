@@ -1,0 +1,12 @@
+{
+  "background_color": "#ffffff",
+  "description": "useful tools including calculator",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "SMART TOOLS HUB",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "tradingboy5577-blip.github",
+  "start_url": "/",
+  "theme_color": "#ffffff"
+}
